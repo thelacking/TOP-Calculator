@@ -1,0 +1,35 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height:100vh;
+}
+button{
+    padding: 30px;
+    border: solid 1px black;
+    box-sizing: border-box;
+    width:10vh;
+}
+button:active{
+    padding: 30px;
+    border: solid 1px black;
+    background-color: rgb(104, 104, 104);
+    box-sizing: border-box;
+    width:10vh;
+}
+.buttons{
+    display:grid;
+    gap:5px;
+    width: max-content;
+    border: solid 1px black;
+    padding:5px;
+    
+}
+.display {
+    font-size: 24px;
+    margin-bottom: 10px;
+    padding: 10px;
+    text-align: right;
+    border: solid 1px black;
+}
