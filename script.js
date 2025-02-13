@@ -1,15 +1,17 @@
 let display= document.getElementsByClassName("display")[0];
 let displaynumbers = [];
 let backnumber;
+let lastUsedSymbol;
 
 
 function ClearDisplay(){    
     display.innerHTML = 0;
-    displaynumbers = ['0'];
+    displaynumbers = [0];
     backnumber = undefined;
 }
 
 function updateDisplay(){
+    if(displaynumbers[0] === 0 & displaynumbers.length > 1) displaynumbers.splice(0, 1);
     display.innerHTML = displaynumbers.join("");
 }
 //#region 0-9 buttons
@@ -64,5 +66,56 @@ function addButton(){
         backnumber += joinedNumber;
     }
     displaynumbers = [0];
+    lastUsedSymbol = '+';
     updateDisplay();
+}
+function subButton(){
+    let joinedNumber = parseInt(displaynumbers.join(""));
+    if(backnumber === undefined){
+        backnumber = joinedNumber;
+    }
+    else{
+        backnumber -= joinedNumber;
+    }
+    displaynumbers = [0];
+    lastUsedSymbol = '-';
+    updateDisplay();
+}
+function MultButton(){
+    let joinedNumber = parseInt(displaynumbers.join(""));
+    if(backnumber === undefined){
+        backnumber = joinedNumber;
+    }
+    else{
+        backnumber = backnumber * joinedNumber;
+    }
+    displaynumbers = [0];
+    lastUsedSymbol = '*';
+    updateDisplay();
+}
+function divButton(){
+    let joinedNumber = parseInt(displaynumbers.join(""));
+    if(backnumber === undefined){
+        backnumber = joinedNumber;
+    }
+    else{
+        backnumber = backnumber / joinedNumber;
+    }
+    displaynumbers = [0];
+    lastUsedSymbol = '/';
+    updateDisplay();
+}
+function equalButton(){
+    if(lastUsedSymbol === '+'){
+        display.innerHTML = backnumber + parseInt(displaynumbers.join(""))
+    }
+    if(lastUsedSymbol === '-'){
+        display.innerHTML = backnumber - parseInt(displaynumbers.join(""))
+    }
+    if(lastUsedSymbol === '*'){
+        display.innerHTML = backnumber * parseInt(displaynumbers.join(""))
+    }
+    if(lastUsedSymbol === '/'){
+        display.innerHTML = backnumber / parseInt(displaynumbers.join(""))
+    }
 }
